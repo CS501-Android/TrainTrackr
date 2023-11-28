@@ -1,5 +1,6 @@
 package com.example.trainfinalproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,6 +46,11 @@ class LoginFrag : Fragment() {
             replace(R.id.fragment_container, SignupFrag())
             commit()
         }}
+
+        // Login check + store local storage if user exist just redirect
+        loginBtn.setOnClickListener {
+            startActivity(Intent(activity, MainActivity::class.java))
+        }
 
         return view
     }
