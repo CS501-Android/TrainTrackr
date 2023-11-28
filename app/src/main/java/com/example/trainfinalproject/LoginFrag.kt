@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,11 +37,15 @@ class LoginFrag : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
-        val text = view.findViewById<TextView>(R.id.textView)
-        text.setOnClickListener {parentFragmentManager.beginTransaction().apply {
+        val signupText = view.findViewById<TextView>(R.id.signupRedirect)
+        val loginBtn = view.findViewById<Button>(R.id.loginBtn)
+
+        // Redirect to sign up
+        signupText.setOnClickListener {parentFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, SignupFrag())
             commit()
         }}
+
         return view
     }
 
