@@ -2,7 +2,6 @@ package com.example.trainfinalproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.trainfinalproject.databinding.ActivityMainBinding
 import com.google.android.gms.maps.GoogleMap
@@ -67,5 +66,4 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             commit()
         }
     }
-
 }
