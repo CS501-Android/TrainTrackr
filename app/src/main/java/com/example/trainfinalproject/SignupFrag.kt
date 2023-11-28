@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +36,16 @@ class SignupFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signup, container, false)
+        val view = inflater.inflate(R.layout.fragment_signup, container, false)
+        val loginText = view.findViewById<TextView>(R.id.loginRedirect)
+        val loginBtn = view.findViewById<Button>(R.id.loginBtn)
+
+        // Redirect to sign up
+        loginText.setOnClickListener {parentFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_container, LoginFrag())
+            commit()
+        }}
+        return view
     }
 
     companion object {
