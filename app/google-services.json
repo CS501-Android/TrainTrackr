@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100375864142",
+    "project_id": "traintrackr-e5611",
+    "storage_bucket": "traintrackr-e5611.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100375864142:android:ab01b2d2e4919bbfa0f41f",
+        "android_client_info": {
+          "package_name": "com.example.trainfinalproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASj7JXiVjx27-2eJLBluDO7r8J8av5Bvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
