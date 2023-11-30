@@ -1,7 +1,16 @@
 package com.example.trainfinalproject
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
+import androidx.core.graphics.toColor
 import androidx.fragment.app.Fragment
 import com.example.trainfinalproject.databinding.ActivityMainBinding
 import com.google.android.gms.maps.GoogleMap
@@ -9,7 +18,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMainBinding
-    // private lateinit var mapView: MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,22 +25,22 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home -> setCurrentFragment(Home())
-                R.id.profile -> setCurrentFragment(Profile())
-                R.id.setting -> setCurrentFragment(Setting())
-                R.id.map -> setCurrentFragment(Map())
-                else -> setCurrentFragment(Error())
-            }
+            setCurrentFragment(when(it.itemId) {
+                R.id.home -> Home()
+                R.id.profile -> Profile()
+                R.id.setting -> Setting()
+                R.id.map -> Map()
+                else -> Error()
+            })
             true
         }
+
+        //var thisONe = findViewById<LinearLayout>(R.id.map_panel).setBackgroundColor(Color.RED)
 
         // Default State
         setCurrentFragment(Home())
         binding.bottomNavigationView.selectedItemId = R.id.home
 
-        // mapView = findViewById(R.id.mapView)
-        // mapView.onCreate(savedInstanceState)
     }
 
     override fun onResume() {

@@ -1,14 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="bottom|end"
     tools:context=".Map">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
+        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        class = "com.google.android.gms.maps.SupportMapFragment"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/map_panel"
+        android:layout_width="match_parent"
+        android:layout_height="373dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/rounded_background"
+        android:orientation="vertical"
+        android:paddingTop="15dp">
+
+        <Button
+            android:id="@+id/map_top_button"
+            android:layout_width="40dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#515151" />
+
+        <LinearLayout
+            android:id="@+id/trip_locations"
+            android:layout_width="350sp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_panel"
+            android:fadingEdgeLength="5sp"
+            android:orientation="vertical"
+            android:outlineAmbientShadowColor="#000000"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:translationY="15dp">
+
+            <LinearLayout
+                android:id="@+id/starting_point_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingHorizontal="10sp"
+                    android:src="@drawable/push_pin_24px" />
+
+                <TextView
+                    android:id="@+id/starting_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center_vertical"
+                    android:paddingStart="5dp"
+                    android:text="South Station"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:backgroundTintMode="multiply"
+                android:foreground="@color/blue_on_top" />
+
+            <LinearLayout
+                android:id="@+id/ending_point_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingHorizontal="10sp"
+                    android:src="@drawable/location_on_24px" />
+
+                <TextView
+                    android:id="@+id/ending_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:gravity="center_vertical"
+                    android:paddingStart="5dp"
+                    android:text="North Andover"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/details_ratings_container"
+            android:layout_width="match_parent"
+            android:layout_height="189dp"
+            android:orientation="horizontal"
+            android:translationY="40sp">
+
+            <LinearLayout
+                android:id="@+id/trip_details_container"
+                android:layout_width="150sp"
+                android:layout_height="180sp"
+                android:background="@drawable/dark_rounded_panel"
+                android:orientation="vertical"
+                android:translationX="30sp">
+
+                <TextView
+                    android:id="@+id/trip_details_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:paddingTop="20sp"
+                    android:paddingBottom="15sp"
+                    android:text="Trip Details"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:id="@+id/view_separator_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="15sp"
+                    android:paddingBottom="15sp">
+
+                    <TextView
+                        android:id="@+id/details_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:paddingLeft="10sp"
+                        android:text="Distance"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/trip_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:gravity="right"
+                        android:paddingRight="10sp"
+                        android:text="25mi"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15sp">
+
+                    <TextView
+                        android:id="@+id/details_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:paddingLeft="10sp"
+                        android:text="Time"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/trip_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:gravity="right"
+                        android:paddingRight="10sp"
+                        android:text="40m"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20sp">
+
+                    <TextView
+                        android:id="@+id/details_avg_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:paddingLeft="10sp"
+                        android:text="Avg. Speed"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/trip_avg_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:gravity="right"
+                        android:paddingRight="10sp"
+                        android:text="38mph"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/trip_ratings_container"
+                android:layout_width="150sp"
+                android:layout_height="180sp"
+                android:background="@drawable/dark_rounded_panel"
+                android:orientation="vertical"
+                android:translationX="75sp">
+
+                <TextView
+                    android:id="@+id/trip_ratings_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:paddingTop="20sp"
+                    android:paddingBottom="15sp"
+                    android:text="Ratings"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/rating_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="15sp"
+                    android:paddingRight="10sp"
+                    android:text="&quot;Great trip, but found it to be quite noisy. Would definitely take again&quot;\n - John"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

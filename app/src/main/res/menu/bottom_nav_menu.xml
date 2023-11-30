@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Profile"
-        android:id="@+id/profile"
-        android:icon="@drawable/baseline_account_circle_black_18" />
-    <item android:title="Feed"
-        android:id="@+id/feed"
-        android:icon="@drawable/baseline_circle_notifications_black_18" />
-    <item android:title="Home"
-        android:id="@+id/home"
-        android:icon="@drawable/baseline_home_24" />
-    <item android:title="Map"
+    <item
         android:id="@+id/map"
-        android:icon="@drawable/baseline_route_black_18" />
-    <item android:title="Setting"
+        android:icon="@drawable/baseline_route_black_18"
+        android:title="@string/button_text" />
+    <item
+        android:id="@+id/feed"
+        android:icon="@drawable/baseline_circle_notifications_black_18"
+        android:title="@string/button_text" />
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/button_text" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/baseline_account_circle_black_18"
+        android:iconTintMode="src_in"
+        android:title="@string/button_text" />
+    <item
         android:id="@+id/setting"
-        android:icon="@drawable/baseline_settings_black_18" />
+        android:icon="@drawable/baseline_settings_black_18"
+        android:title="@string/button_text" />
 </menu>
